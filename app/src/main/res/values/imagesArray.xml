@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="btnColours">
+        <item>@drawable/btncolour1</item>
+        <item>@drawable/btncolour2</item>
+        <item>@drawable/btncolour3</item>
+        <item>@drawable/btncolour4</item>
+    </array>
+
+</resources>
