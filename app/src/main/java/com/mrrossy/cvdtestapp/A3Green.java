@@ -2,8 +2,6 @@ package com.mrrossy.cvdtestapp;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.os.Handler;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -15,7 +13,7 @@ import android.widget.Toast;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class A1Yellow extends AppCompatActivity {
+public class A3Green extends AppCompatActivity {
 
     public long tStart;
     TableLayout answerTable;
@@ -29,10 +27,10 @@ public class A1Yellow extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_a1_yellow);
+        setContentView(R.layout.activity_a3_green);
 
         Intent _intent = getIntent();
-      
+
 
         playAudioWhatColourWasI();
 
@@ -48,8 +46,8 @@ public class A1Yellow extends AppCompatActivity {
                 catch(InterruptedException ex) {
 
                 }
-                }
-            };
+            }
+        };
 
 
         threada.start();
@@ -72,7 +70,7 @@ public class A1Yellow extends AppCompatActivity {
                 try {
                     Thread.sleep(1250);
                 } catch (InterruptedException e) {
-                    
+
                 }
 
 
@@ -88,7 +86,7 @@ public class A1Yellow extends AppCompatActivity {
         threada.start();
 
 
-        // on click listener for imagebutton1 (green)
+        // on click listener for imagebutton4 (green)
         imgBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,7 +99,7 @@ public class A1Yellow extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
                 playAudioWellDone();
 
-                final Intent nextQ = new Intent(view.getContext(), Q2Red.class);
+                final Intent nextQ = new Intent(view.getContext(),  Q2Red.class);
 
                 new Timer().schedule(new TimerTask() {
                     @Override
@@ -114,7 +112,7 @@ public class A1Yellow extends AppCompatActivity {
             }
         });
 
-        // on click listener for imagebutton2 (blue)
+        // on click listener for imagebutton3 (blue)
         imgBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,7 +124,7 @@ public class A1Yellow extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
                 playAudioWellDone();
 
-                final Intent nextQ = new Intent(view.getContext(), Q2Red.class);
+                final Intent nextQ = new Intent(view.getContext(), Q3Green.class);
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
@@ -137,7 +135,7 @@ public class A1Yellow extends AppCompatActivity {
             }
         });
 
-        // on click listener for imagebutton3 (red)
+        // on click listener for imagebutton2 (red)
         imgBtn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,7 +146,7 @@ public class A1Yellow extends AppCompatActivity {
                 imgBtn4.setVisibility(View.GONE);*/
 
                 Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
-                final Intent nextQ = new Intent(view.getContext(), Q2Red.class);
+                final Intent nextQ = new Intent(view.getContext(), Q3Green.class);
                 playAudioWellDone();
                 new Timer().schedule(new TimerTask() {
                     @Override
@@ -160,7 +158,7 @@ public class A1Yellow extends AppCompatActivity {
             }
         });
 
-        // on click listener for imagebutton4 (yellow)
+        // on click listener for imagebutton1 (yellow)
         imgBtn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -172,7 +170,7 @@ public class A1Yellow extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
                 playAudioWellDone();
-                final Intent nextQ = new Intent(view.getContext(), Q2Red.class);
+                final Intent nextQ = new Intent(view.getContext(), Q3Green.class);
 
                 new Timer().schedule(new TimerTask() {
                     @Override
@@ -263,12 +261,12 @@ public class A1Yellow extends AppCompatActivity {
 
     private void playIfYouAreNotSure() {
 
-            if(thePlayer.isPlaying()){
-                thePlayer.stop();
-            }
+        if(thePlayer.isPlaying()){
+            thePlayer.stop();
+        }
 
-            MediaPlayer thePlayer = MediaPlayer.create(this, R.raw.ifyouarenotsurerememberorguess);
-            thePlayer.start();
+        MediaPlayer thePlayer = MediaPlayer.create(this, R.raw.ifyouarenotsurerememberorguess);
+        thePlayer.start();
     }
 
 /*
@@ -282,7 +280,7 @@ public class A1Yellow extends AppCompatActivity {
 
     public void nextQ(View view){
 
-        Intent nextQIntent  = new Intent(this, Q2Red.class);
+        Intent nextQIntent  = new Intent(this, Q4Blue.class);
 
         startActivity(nextQIntent);
     }

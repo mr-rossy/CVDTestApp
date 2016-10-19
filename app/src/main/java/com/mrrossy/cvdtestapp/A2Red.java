@@ -2,10 +2,8 @@ package com.mrrossy.cvdtestapp;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.os.Handler;
-import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
@@ -15,7 +13,7 @@ import android.widget.Toast;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class A1Yellow extends AppCompatActivity {
+public class A2Red extends AppCompatActivity {
 
     public long tStart;
     TableLayout answerTable;
@@ -29,7 +27,7 @@ public class A1Yellow extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_a1_yellow);
+        setContentView(R.layout.activity_a2_red);
 
         Intent _intent = getIntent();
       
@@ -101,7 +99,7 @@ public class A1Yellow extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
                 playAudioWellDone();
 
-                final Intent nextQ = new Intent(view.getContext(), Q2Red.class);
+                final Intent nextQ = new Intent(view.getContext(),  Q2Red.class);
 
                 new Timer().schedule(new TimerTask() {
                     @Override
@@ -126,7 +124,7 @@ public class A1Yellow extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
                 playAudioWellDone();
 
-                final Intent nextQ = new Intent(view.getContext(), Q2Red.class);
+                final Intent nextQ = new Intent(view.getContext(), Q3Green.class);
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
@@ -148,7 +146,7 @@ public class A1Yellow extends AppCompatActivity {
                 imgBtn4.setVisibility(View.GONE);*/
 
                 Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
-                final Intent nextQ = new Intent(view.getContext(), Q2Red.class);
+                final Intent nextQ = new Intent(view.getContext(), Q3Green.class);
                 playAudioWellDone();
                 new Timer().schedule(new TimerTask() {
                     @Override
@@ -172,7 +170,7 @@ public class A1Yellow extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
                 playAudioWellDone();
-                final Intent nextQ = new Intent(view.getContext(), Q2Red.class);
+                final Intent nextQ = new Intent(view.getContext(), Q3Green.class);
 
                 new Timer().schedule(new TimerTask() {
                     @Override
@@ -282,7 +280,7 @@ public class A1Yellow extends AppCompatActivity {
 
     public void nextQ(View view){
 
-        Intent nextQIntent  = new Intent(this, Q2Red.class);
+        Intent nextQIntent  = new Intent(this, Q4Blue.class);
 
         startActivity(nextQIntent);
     }

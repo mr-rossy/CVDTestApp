@@ -15,8 +15,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/browndog_640"
-        android:id="@+id/imageButton"
+        android:id="@+id/imgBtnBrownDog"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:onClick="startq1Yellow" />
+        android:onClick="startq1Yellow"
+        android:clickable="false" />
 </RelativeLayout>

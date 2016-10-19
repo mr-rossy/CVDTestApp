@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">CVDTestApp</string>
     <string name="matricrequest">Please enter your matriculation number</string>
-
+    <string name="enterbutton">ENTER</string>
 </resources>

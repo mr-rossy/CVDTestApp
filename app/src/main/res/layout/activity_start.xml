@@ -29,16 +29,19 @@
         android:layout_marginTop="49dp"
         android:id="@+id/matricEnterEditText"
         android:layout_below="@+id/matricTextView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:maxLength="8"
+        tools:maxLength="8"
+        android:textSize="24sp" />
 
     <Button
-        android:text="Enter"
+        android:text="@string/enterbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="46dp"
-        android:onClick="startTest"
         android:id="@+id/btnEnterMatric"
         android:textSize="24sp"
         android:layout_below="@+id/matricEnterEditText"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="checkMatric" />
 </RelativeLayout>

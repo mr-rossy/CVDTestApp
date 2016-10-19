@@ -27,7 +27,12 @@
         <activity
             android:name=".testIntro"
             android:screenOrientation="landscape" />
-        <activity android:name=".Q1Red"></activity>
+        <activity android:name=".Q2Red" />
+        <activity android:name=".Q3Green" />
+        <activity android:name=".A3Green" />
+        <activity android:name=".Q4Blue" />
+        <activity android:name=".A4Blue" />
+        <activity android:name=".EndActivity"></activity>
     </application>
 
 </manifest>

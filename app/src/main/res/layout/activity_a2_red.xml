@@ -31,9 +31,10 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/btncolour4"
-                android:id="@+id/imageButton1"
+                app:srcCompat="@drawable/btncolour3"
+                android:id="@+id/imageButton4"
                 />
+
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -58,9 +59,10 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/btncolour3"
-                android:id="@+id/imageButton4"
+                app:srcCompat="@drawable/btncolour4"
+                android:id="@+id/imageButton1"
                 />
+
         </TableRow>
 
     </TableLayout>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_a1_yellow"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_q3_green"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:screenOrientation="landscape"
@@ -31,14 +31,14 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/btncolour4"
+                app:srcCompat="@drawable/btncolour2"
                 android:id="@+id/imageButton1"
                 />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/btncolour2"
+                app:srcCompat="@drawable/btncolour3"
                 android:id="@+id/imageButton2"
                 />
         </TableRow>
