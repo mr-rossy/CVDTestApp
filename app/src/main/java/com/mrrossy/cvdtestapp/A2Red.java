@@ -3,6 +3,7 @@ package com.mrrossy.cvdtestapp;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,12 +16,17 @@ import java.util.TimerTask;
 
 public class A2Red extends AppCompatActivity {
 
-    public long tStart;
+    public long tStart = System.currentTimeMillis();
     TableLayout answerTable;
     ImageButton imgBtn1, imgBtn2, imgBtn3, imgBtn4;
     private Thread threada;
+    private long lastClickTime = 0;
+    String timeSecs;
+    String answer;
+    String timeTaken;
 
     public Test testGo;
+    dbHelper theDB;
 
 
     MediaPlayer thePlayer;
@@ -29,29 +35,30 @@ public class A2Red extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_a2_red);
 
-        Intent _intent = getIntent();
-      
+        Intent _anIntent = getIntent();
+        testGo = (Test) _anIntent.getSerializableExtra("testGo");
+        String matric = testGo.get_matric();
+
 
         playAudioWhatColourWasI();
 
-        threada = new Thread() {
+     /*   threada = new Thread() {
             @Override
             public void run() {
                 try {
-                    synchronized (this){
-                        wait(7000);
+                    synchronized (this) {
+                        wait(4000);
                         playIfYouAreNotSure();
                     }
-                }
-                catch(InterruptedException ex) {
+                } catch (InterruptedException ex) {
 
                 }
-                }
-            };
+            }
+        };
 
 
         threada.start();
-
+*/
         /*MediaPlayer welldonePlayer = MediaPlayer.create(this, R.raw.welldoneletsdoanother);*/
 
 
@@ -63,14 +70,13 @@ public class A2Red extends AppCompatActivity {
         answerTable = (TableLayout) findViewById(R.id.answerTable);
 
 
-
         Thread thread = new Thread() {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(1250);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
-                    
+
                 }
 
 
@@ -83,107 +89,102 @@ public class A2Red extends AppCompatActivity {
             }
         };
         thread.start();
-        threada.start();
+        // threada.start();
 
+        // yellow
 
-        // on click listener for imagebutton1 (green)
         imgBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+
                 calculateTime();
-                /*// Hide other buttons
-                imgBtn2.setVisibility(View.GONE);
-                imgBtn3.setVisibility(View.GONE);
-                imgBtn4.setVisibility(View.GONE);*/
-             /*   stopPlaying();*/
+
+                testGo.set_q2ans("yellow");
+                answer = "yellow";
+
+                if (SystemClock.elapsedRealtime() - lastClickTime < 100) {
+                    return;
+                }
+                lastClickTime = SystemClock.elapsedRealtime();
+
                 Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
                 playAudioWellDone();
 
-                final Intent nextQ = new Intent(view.getContext(),  Q2Red.class);
-
-                new Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        startActivity(nextQ);
-                    }
-                }, 500);
-
+                delayThread.start();
 
             }
         });
 
-        // on click listener for imagebutton2 (blue)
+        // blue
         imgBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+
                 calculateTime();
-               /* stopPlaying();*/
-              /*  imgBtn1.setVisibility(View.GONE);
-                imgBtn3.setVisibility(View.GONE);
-                imgBtn4.setVisibility(View.GONE);*/
+
+                testGo.set_q2ans("blue");
+                answer = "blue";
+
+                if (SystemClock.elapsedRealtime() - lastClickTime < 100) {
+                    return;
+                }
+                lastClickTime = SystemClock.elapsedRealtime();
+
                 Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
                 playAudioWellDone();
 
-                final Intent nextQ = new Intent(view.getContext(), Q3Green.class);
-                new Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        startActivity(nextQ);
-                    }
-                }, 500);
+                delayThread.start();
 
             }
         });
 
-        // on click listener for imagebutton3 (red)
+    // red
         imgBtn3.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+
                 calculateTime();
-               /* stopPlaying();*/
-                /*imgBtn2.setVisibility(View.GONE);
-                imgBtn1.setVisibility(View.GONE);
-                imgBtn4.setVisibility(View.GONE);*/
+
+                testGo.set_q2ans("red");
+                answer = "red";
+
+                if (SystemClock.elapsedRealtime() - lastClickTime < 100) {
+                    return;
+                }
+                lastClickTime = SystemClock.elapsedRealtime();
 
                 Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
-                final Intent nextQ = new Intent(view.getContext(), Q3Green.class);
                 playAudioWellDone();
-                new Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        startActivity(nextQ);
-                    }
-                }, 500);
+
+                delayThread.start();
 
             }
         });
 
-        // on click listener for imagebutton4 (yellow)
+    // green
         imgBtn4.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+
                 calculateTime();
-                /*stopPlaying();*/
-                /*imgBtn2.setVisibility(View.GONE);
-                imgBtn3.setVisibility(View.GONE);
-                imgBtn1.setVisibility(View.GONE);*/
+
+                testGo.set_q2ans("green");
+                answer="red";
+
+                if (SystemClock.elapsedRealtime() - lastClickTime < 100) {
+                    return;
+                }
+                lastClickTime = SystemClock.elapsedRealtime();
 
                 Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
                 playAudioWellDone();
-                final Intent nextQ = new Intent(view.getContext(), Q3Green.class);
 
-                new Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        startActivity(nextQ);
-                    }
-                }, 500);
+                delayThread.start();
 
             }
         });
 
     }
-
     @Override
     protected void onStop() {
         super.onStop();
@@ -207,8 +208,11 @@ public class A2Red extends AppCompatActivity {
         long tDelta = tEnd - tStart;
         double elapsedSeconds = tDelta / 1000.0;
         System.out.println(elapsedSeconds);
+        timeTaken = Double.toString(elapsedSeconds);
+        testGo.set_q2time(timeTaken);
+       /* timeSecs = Double.toString(elapsedSeconds);
+        testGo.set_q1time(timeSecs);*/
     }
-
     // method to make table visible to user
     public void makeTableVisible() {
         answerTable.setVisibility(View.VISIBLE);
@@ -233,14 +237,15 @@ public class A2Red extends AppCompatActivity {
 
     private void playAudioWellDone() {
 
-        final MediaPlayer thePlayer = MediaPlayer.create(this, R.raw.welldoneletsdoanother);
+        MediaPlayer thePlayer = MediaPlayer.create(this, R.raw.welldoneletsdoanother);
+        thePlayer.start();
 
-        new Timer().schedule(new TimerTask() {
+        /*new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 thePlayer.start();
             }
-        }, 100);
+        }, 100);*/
 
     }
 
@@ -261,12 +266,13 @@ public class A2Red extends AppCompatActivity {
 
     private void playIfYouAreNotSure() {
 
-            if(thePlayer.isPlaying()){
-                thePlayer.stop();
-            }
+        if(thePlayer.isPlaying()){
+            thePlayer.stop();
+            return;
+        }
 
-            MediaPlayer thePlayer = MediaPlayer.create(this, R.raw.ifyouarenotsurerememberorguess);
-            thePlayer.start();
+        MediaPlayer thePlayer = MediaPlayer.create(this, R.raw.ifyouarenotsurerememberorguess);
+        thePlayer.start();
     }
 
 /*
@@ -280,9 +286,23 @@ public class A2Red extends AppCompatActivity {
 
     public void nextQ(View view){
 
-        Intent nextQIntent  = new Intent(this, Q4Blue.class);
+        Intent nextQIntent  = new Intent(this, Q2Red.class);
 
         startActivity(nextQIntent);
     }
+
+
+    Thread delayThread = new Thread() {
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+
+            }
+            Intent i = new Intent(A2Red.this, EndActivity.class);
+            startActivity(i);
+        }
+    };
 
 }

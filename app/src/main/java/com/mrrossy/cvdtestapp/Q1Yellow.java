@@ -39,7 +39,7 @@ public class Q1Yellow extends AppCompatActivity {
             @Override
             public void run() {
                 final Intent answerIntent = new Intent(Q1Yellow.this, A1Yellow.class);
-                answerIntent.putExtra("test", testGo);
+                answerIntent.putExtra("testGo", testGo);
                 Q1Yellow.this.startActivity(answerIntent);
                 Q1Yellow.this.finish();
             }

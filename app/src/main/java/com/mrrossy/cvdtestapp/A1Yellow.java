@@ -3,6 +3,7 @@ package com.mrrossy.cvdtestapp;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,13 +18,17 @@ import java.util.TimerTask;
 
 public class A1Yellow extends AppCompatActivity {
 
-    public long tStart;
+    public long tStart = System.currentTimeMillis();
     TableLayout answerTable;
     ImageButton imgBtn1, imgBtn2, imgBtn3, imgBtn4;
     private Thread threada;
+    private long lastClickTime = 0;
+    String timeSecs;
+    String answer;
+    String timeTaken;
 
     public Test testGo;
-
+    dbHelper theDB;
 
     MediaPlayer thePlayer;
 
@@ -32,28 +37,31 @@ public class A1Yellow extends AppCompatActivity {
         setContentView(R.layout.activity_a1_yellow);
 
         Intent _intent = getIntent();
-      
+        testGo = (Test)_intent.getSerializableExtra("testGo");
+        String matric = testGo.get_matric();
+
+
+
 
         playAudioWhatColourWasI();
 
-        threada = new Thread() {
+     /*   threada = new Thread() {
             @Override
             public void run() {
                 try {
-                    synchronized (this){
-                        wait(7000);
+                    synchronized (this) {
+                        wait(4000);
                         playIfYouAreNotSure();
                     }
-                }
-                catch(InterruptedException ex) {
+                } catch (InterruptedException ex) {
 
                 }
-                }
-            };
+            }
+        };
 
 
         threada.start();
-
+*/
         /*MediaPlayer welldonePlayer = MediaPlayer.create(this, R.raw.welldoneletsdoanother);*/
 
 
@@ -70,59 +78,155 @@ public class A1Yellow extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(1250);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
-                    
+
                 }
+
+
+
+
 
 
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         makeTableVisible();
+
                     }
                 });
             }
         };
         thread.start();
-        threada.start();
+       // threada.start();
 
-
-        // on click listener for imagebutton1 (green)
+        // green button
         imgBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+
                 calculateTime();
-                /*// Hide other buttons
-                imgBtn2.setVisibility(View.GONE);
-                imgBtn3.setVisibility(View.GONE);
-                imgBtn4.setVisibility(View.GONE);*/
-             /*   stopPlaying();*/
+
+                testGo.set_q1ans("green");
+                answer = "green";
+
+
+                if (SystemClock.elapsedRealtime() - lastClickTime < 100) {
+                    return;
+                }
+                lastClickTime = SystemClock.elapsedRealtime();
+
                 Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
                 playAudioWellDone();
 
-                final Intent nextQ = new Intent(view.getContext(), Q2Red.class);
-
-                new Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        startActivity(nextQ);
-                    }
-                }, 500);
-
+                delayThread.start();
 
             }
         });
 
-        // on click listener for imagebutton2 (blue)
+        // blue button
+
         imgBtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                calculateTime();
+
+                answer = "blue";
+                testGo.set_q1ans("blue");
+
+                if (SystemClock.elapsedRealtime() - lastClickTime < 100) {
+                    return;
+                }
+                lastClickTime = SystemClock.elapsedRealtime();
+
+                Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
+                playAudioWellDone();
+
+                delayThread.start();
+
+            }
+        });
+
+        // red button
+
+        imgBtn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                calculateTime();
+
+                testGo.set_q1ans("red");
+                answer = "red";
+
+                if (SystemClock.elapsedRealtime() - lastClickTime < 100) {
+                    return;
+                }
+                lastClickTime = SystemClock.elapsedRealtime();
+
+                Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
+                playAudioWellDone();
+
+                delayThread.start();
+
+            }
+        });
+
+        // yellow button
+
+        imgBtn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                calculateTime();
+
+                testGo.set_q1ans("yellow");
+                answer = "yellow";
+
+                if (SystemClock.elapsedRealtime() - lastClickTime < 100) {
+                    return;
+                }
+                lastClickTime = SystemClock.elapsedRealtime();
+
+                Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
+                playAudioWellDone();
+
+                delayThread.start();
+
+            }
+        });
+
+
+
+        // on click listener for imagebutton1 (green)
+  /*      imgBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 calculateTime();
-               /* stopPlaying();*/
-              /*  imgBtn1.setVisibility(View.GONE);
+
+    //             Hide other buttons
+                imgBtn2.setVisibility(View.GONE);
                 imgBtn3.setVisibility(View.GONE);
-                imgBtn4.setVisibility(View.GONE);*/
+                imgBtn4.setVisibility(View.GONE);*//*
+             *//*   stopPlaying();*//*
+                Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
+   //             playAudioWellDone();
+
+     //           delayThread.start();
+
+
+   //         }
+   //     });*/
+
+        // on click listener for imagebutton2 (blue)
+      /*  imgBtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calculateTime();
+               *//* stopPlaying();*//*
+              *//*  imgBtn1.setVisibility(View.GONE);
+                imgBtn3.setVisibility(View.GONE);
+                imgBtn4.setVisibility(View.GONE);*//*
                 Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
                 playAudioWellDone();
 
@@ -132,7 +236,7 @@ public class A1Yellow extends AppCompatActivity {
                     public void run() {
                         startActivity(nextQ);
                     }
-                }, 500);
+                }, 2000);
 
             }
         });
@@ -142,10 +246,10 @@ public class A1Yellow extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 calculateTime();
-               /* stopPlaying();*/
-                /*imgBtn2.setVisibility(View.GONE);
+               *//* stopPlaying();*//*
+                *//*imgBtn2.setVisibility(View.GONE);
                 imgBtn1.setVisibility(View.GONE);
-                imgBtn4.setVisibility(View.GONE);*/
+                imgBtn4.setVisibility(View.GONE);*//*
 
                 Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
                 final Intent nextQ = new Intent(view.getContext(), Q2Red.class);
@@ -155,7 +259,7 @@ public class A1Yellow extends AppCompatActivity {
                     public void run() {
                         startActivity(nextQ);
                     }
-                }, 500);
+                }, 2000);
 
             }
         });
@@ -165,10 +269,10 @@ public class A1Yellow extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 calculateTime();
-                /*stopPlaying();*/
-                /*imgBtn2.setVisibility(View.GONE);
+                *//*stopPlaying();*//*
+                *//*imgBtn2.setVisibility(View.GONE);
                 imgBtn3.setVisibility(View.GONE);
-                imgBtn1.setVisibility(View.GONE);*/
+                imgBtn1.setVisibility(View.GONE);*//*
 
                 Toast.makeText(getApplicationContext(), "This works", Toast.LENGTH_LONG).show();
                 playAudioWellDone();
@@ -179,13 +283,15 @@ public class A1Yellow extends AppCompatActivity {
                     public void run() {
                         startActivity(nextQ);
                     }
-                }, 500);
+                }, 2000);
 
             }
         });
 
     }
+*/
 
+    }
     @Override
     protected void onStop() {
         super.onStop();
@@ -209,6 +315,10 @@ public class A1Yellow extends AppCompatActivity {
         long tDelta = tEnd - tStart;
         double elapsedSeconds = tDelta / 1000.0;
         System.out.println(elapsedSeconds);
+        timeTaken = Double.toString(elapsedSeconds);
+        testGo.set_q1time(timeTaken);
+       /* timeSecs = Double.toString(elapsedSeconds);
+        testGo.set_q1time(timeSecs);*/
     }
 
     // method to make table visible to user
@@ -235,15 +345,21 @@ public class A1Yellow extends AppCompatActivity {
 
     private void playAudioWellDone() {
 
-        final MediaPlayer thePlayer = MediaPlayer.create(this, R.raw.welldoneletsdoanother);
+        MediaPlayer thePlayer = MediaPlayer.create(this, R.raw.welldoneletsdoanother);
+        thePlayer.start();
 
-        new Timer().schedule(new TimerTask() {
+        /*new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 thePlayer.start();
             }
-        }, 100);
+        }, 100);*/
 
+    }
+
+    public void addAnswer() {
+
+        testGo.set_q1ans(answer);
     }
 
 
@@ -265,6 +381,7 @@ public class A1Yellow extends AppCompatActivity {
 
             if(thePlayer.isPlaying()){
                 thePlayer.stop();
+                return;
             }
 
             MediaPlayer thePlayer = MediaPlayer.create(this, R.raw.ifyouarenotsurerememberorguess);
@@ -280,6 +397,7 @@ public class A1Yellow extends AppCompatActivity {
         }
     }*/
 
+/*
     public void nextQ(View view){
 
         Intent nextQIntent  = new Intent(this, Q2Red.class);
@@ -287,4 +405,23 @@ public class A1Yellow extends AppCompatActivity {
         startActivity(nextQIntent);
     }
 
+*/
+
+    Thread delayThread = new Thread() {
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+
+            }
+            Intent i = new Intent(A1Yellow.this, Q2Red.class);
+            testGo.set_q1ans(answer);
+            i.putExtra("testGo", testGo);
+
+            startActivity(i);
+        }
+    };
+
 }
+

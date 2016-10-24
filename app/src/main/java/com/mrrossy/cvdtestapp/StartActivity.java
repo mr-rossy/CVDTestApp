@@ -70,7 +70,6 @@ public class StartActivity extends AppCompatActivity implements Serializable {
            /* dbHelper db = new dbHelper(this);*/
             Test testGo = new Test();
             testGo._matric = matric;
-
             Intent test_introIntent = new Intent(this, testIntro.class);
             test_introIntent.putExtra("testGo", testGo);
             startActivity(test_introIntent);

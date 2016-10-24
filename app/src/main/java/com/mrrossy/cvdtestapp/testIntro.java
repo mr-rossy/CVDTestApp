@@ -14,6 +14,8 @@ import java.util.TimerTask;
 public class testIntro extends AppCompatActivity {
 
     ImageButton brownDog;
+
+    dbHelper theDB;
     public Test testGo;
 
     @Override
