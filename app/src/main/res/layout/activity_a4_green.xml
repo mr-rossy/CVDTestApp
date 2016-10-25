@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_a4_green"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.mrrossy.cvdtestapp.A4Green">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/answerTable"
+        android:visibility="invisible"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        tools:visibility="invisible">
+
+        <TableRow
+            android:layout_weight="1"
+            android:weightSum="0.5"
+            android:id="@+id/tablerow1">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/btncolour2"
+                android:id="@+id/imageButton1"
+                />
+
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/btncolour4"
+                android:id="@+id/imageButton4"
+                />
+
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_weight="1"
+            android:weightSum="0.5"
+            android:id="@+id/tablerow2">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/btncolour3"
+                android:id="@+id/imageButton3"
+                />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/btncolour1"
+                android:id="@+id/imageButton2"
+                />
+
+        </TableRow>
+
+    </TableLayout>
+</RelativeLayout>

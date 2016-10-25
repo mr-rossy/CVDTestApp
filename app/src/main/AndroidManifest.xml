@@ -27,10 +27,26 @@
         <activity
             android:name=".testIntro"
             android:screenOrientation="landscape" />
-        <activity android:name=".Q2Red" />
-        <activity android:name=".A2Red" />
-        <activity android:name=".EndActivity" />
-        <activity android:name=".Q3Blue"></activity>
+        <activity
+            android:name=".Q2Red"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".A2Red"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".EndActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Q3Blue"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".A3Blue"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Q4Green"
+            android:screenOrientation="landscape" />
+        <activity android:name=".A4Green"
+            android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>

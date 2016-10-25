@@ -9,42 +9,40 @@ import android.os.Bundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Q3Blue extends AppCompatActivity {
+public class Q4Green extends AppCompatActivity {
 
     public Test testGo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_q3_blue);
-
-        Intent _theintent = getIntent();
-        testGo = (Test)_theintent.getSerializableExtra("testGo");
-
-        String matric = testGo.get_matric();
+        setContentView(R.layout.activity_q4_green);
 
         final MediaPlayer canyouPlayer = MediaPlayer.create(this, R.raw.canyouseewhatcolouriam);
 
 
-
+        Intent _intent = getIntent();
+        testGo = (Test)_intent.getSerializableExtra("testGo");
+        String matric = testGo.get_matric();
 
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 canyouPlayer.start();
             }
-        }, 500);
+        }, 1000);
 
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent answerIntent = new Intent(Q3Blue.this, A3Blue.class);
+                final Intent answerIntent = new Intent(Q4Green.this, A4Green.class);
                 answerIntent.putExtra("testGo", testGo);
-                Q3Blue.this.startActivity(answerIntent);
-                Q3Blue.this.finish();
+                Q4Green.this.startActivity(answerIntent);
+                Q4Green.this.finish();
             }
         }, 5000);
+
+
     }
 }
-

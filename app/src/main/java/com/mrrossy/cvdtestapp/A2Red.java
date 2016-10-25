@@ -93,7 +93,7 @@ public class A2Red extends AppCompatActivity {
 
         // yellow
 
-        imgBtn1.setOnClickListener(new View.OnClickListener() {
+        imgBtn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -162,14 +162,14 @@ public class A2Red extends AppCompatActivity {
         });
 
     // green
-        imgBtn4.setOnClickListener(new View.OnClickListener() {
+        imgBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 calculateTime();
 
                 testGo.set_q2ans("green");
-                answer="red";
+                answer="green";
 
                 if (SystemClock.elapsedRealtime() - lastClickTime < 100) {
                     return;
@@ -275,14 +275,7 @@ public class A2Red extends AppCompatActivity {
         thePlayer.start();
     }
 
-/*
-    private void stopPlaying() {
-        if (thePlayer!= null) {
-            thePlayer.stop();
-            thePlayer.release();
-            thePlayer = null;
-        }
-    }*/
+
 
     public void nextQ(View view){
 
@@ -300,7 +293,9 @@ public class A2Red extends AppCompatActivity {
             } catch (InterruptedException e) {
 
             }
-            Intent i = new Intent(A2Red.this, EndActivity.class);
+            Intent i = new Intent(A2Red.this, Q3Blue.class);
+            testGo.set_q2ans(answer);
+            i.putExtra("testGo", testGo);
             startActivity(i);
         }
     };
